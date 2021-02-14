@@ -1,8 +1,8 @@
 variable "repository" {
-    type = string
+  type = string
 }
 
 variable "workspace_image" {
   default = "base"
-  type = string
+  type    = string
 }
