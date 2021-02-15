@@ -3,8 +3,7 @@ image:
 
 # TODO: make this configurable for monorepo support
 tasks:
-  - command: zsh
-    init: terraform init
+  - init: terraform init
 
 vscode:
   extensions:
