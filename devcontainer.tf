@@ -1,12 +1,12 @@
 locals {
   devcontainer_dockerfile = templatefile(
-    "${path.module}/files/gitpod/gitpod.Dockerfile.tpl",
+    "${path.module}/files/devcontainer/${var.workspace_image}/Dockerfile.tpl",
     {
       workspace_image = var.workspace_image
     }
   )
   devcontainer_json = templatefile(
-    "${path.module}/files/gitpod/gitpod.yml.tpl",
+    "${path.module}/files/devcontainer/${var.workspace_image}/devcontainer.json.tpl",
     {
       workspace_image = var.workspace_image
     }
