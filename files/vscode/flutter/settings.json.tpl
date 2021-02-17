@@ -8,13 +8,6 @@
 ],
   "dockerFile": "Dockerfile",
   "settings": {
-    "terminal.integrated.shell.linux": "/usr/bin/zsh",
-    
-    "[terraform]": {
-        "editor.formatOnSave": true
-    },
-    "terraform-ls.experimentalFeatures": {
-        "validateOnSave": true
-    }   
+      "terminal.integrated.shell.linux": "/usr/bin/zsh"
   }
 }
