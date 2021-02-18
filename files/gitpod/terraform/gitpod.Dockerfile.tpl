@@ -1,1 +1,1 @@
-FROM us-central1-docker.pkg.dev/containerlabs/gitpod/terraform:latest
+FROM ${image_registry}/${workspace_image}:${workspace_image_tag}

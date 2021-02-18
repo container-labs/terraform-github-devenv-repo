@@ -2,7 +2,8 @@ locals {
   gitpod_dockerfile = templatefile(
     "${path.module}/files/gitpod/${var.workspace_image}/gitpod.Dockerfile.tpl",
     {
-      workspace_image = var.workspace_image
+      workspace_image     = var.workspace_image
+      workspace_image_tag = var.workspace_image_tag
     }
   )
   gitpod_yaml = templatefile(
