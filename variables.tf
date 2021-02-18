@@ -16,3 +16,8 @@ variable "workspace_image_tag" {
   default = "latest"
   type    = string
 }
+
+variable "workspace_image_digest" {
+  default = null
+  type = string
+}
