@@ -10,8 +10,8 @@ locals {
   gitpod_dockerfile_digest = templatefile(
     "${path.module}/files/gitpod/${var.workspace_image}/gitpod.digest.Dockerfile.tpl",
     {
-      image_registry      = var.image_registry
-      workspace_image     = var.workspace_image
+      image_registry         = var.image_registry
+      workspace_image        = var.workspace_image
       workspace_image_digest = var.workspace_image_digest
     }
   )
@@ -23,7 +23,7 @@ locals {
 }
 
 resource "github_repository_file" "gitpod_dockerfile" {
-  count = length(var.workspace_image_digest) > 0 ? 1 : 0
+  count               = length(var.workspace_image_digest) > 0 ? 1 : 0
   repository          = var.repository
   branch              = "main"
   file                = ".devcontainer/gitpod.Dockerfile"
@@ -32,7 +32,7 @@ resource "github_repository_file" "gitpod_dockerfile" {
 }
 
 resource "github_repository_file" "gitpod_dockerfile_digest" {
-  count = length(var.workspace_image_digest) > 0 ? 0 : 1
+  count               = length(var.workspace_image_digest) > 0 ? 0 : 1
   repository          = var.repository
   branch              = "main"
   file                = ".devcontainer/gitpod.Dockerfile"

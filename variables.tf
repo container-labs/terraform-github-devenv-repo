@@ -21,5 +21,5 @@ variable "workspace_image_tag" {
 // otherwise the template function barfs
 variable "workspace_image_digest" {
   default = ""
-  type = string
+  type    = string
 }
