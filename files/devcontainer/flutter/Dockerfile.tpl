@@ -1,2 +1,1 @@
-# TODO: create a devcontainer base image
-FROM us-central1-docker.pkg.dev/containerlabs/devcontainer/flutter:latest
+FROM ${image_registry}/${workspace_image}:${workspace_image_tag}

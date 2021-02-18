@@ -4,6 +4,7 @@ locals {
     {
       workspace_image     = var.workspace_image
       workspace_image_tag = var.workspace_image_tag
+      image_registry      = var.image_registry
     }
   )
   gitpod_yaml = templatefile(
