@@ -17,7 +17,9 @@ variable "workspace_image_tag" {
   type    = string
 }
 
+// default has to be an empty string
+// otherwise the template function barfs
 variable "workspace_image_digest" {
-  default = null
+  default = ""
   type = string
 }

@@ -23,7 +23,7 @@ locals {
 }
 
 resource "github_repository_file" "gitpod_dockerfile" {
-  count = var.workspace_image_digest == null ? 1 : 0
+  count = length(var.workspace_image_digest) > 0 ? 1 : 0
   repository          = var.repository
   branch              = "main"
   file                = ".devcontainer/gitpod.Dockerfile"
@@ -32,7 +32,7 @@ resource "github_repository_file" "gitpod_dockerfile" {
 }
 
 resource "github_repository_file" "gitpod_dockerfile_digest" {
-  count = var.workspace_image_digest == null ? 0 : 1
+  count = length(var.workspace_image_digest) > 0 ? 0 : 1
   repository          = var.repository
   branch              = "main"
   file                = ".devcontainer/gitpod.Dockerfile"
