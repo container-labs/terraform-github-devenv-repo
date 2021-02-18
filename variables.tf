@@ -19,5 +19,5 @@ variable "workspace_image_tag" {
 
 variable "workspace_image_digest" {
   default = null
-  type = string
+  type    = string
 }
