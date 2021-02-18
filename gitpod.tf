@@ -10,7 +10,6 @@ locals {
   gitpod_yaml = templatefile(
     "${path.module}/files/gitpod/${var.workspace_image}/gitpod.yml.tpl",
     {
-      workspace_image = var.workspace_image
     }
   )
 }

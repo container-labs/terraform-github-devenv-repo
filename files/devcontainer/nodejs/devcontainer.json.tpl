@@ -1,14 +1,10 @@
 {
-  "name": "Container Labs Terraform",
+  "name": "Container Labs NodeJS",
   "extensions": [
       "hashicorp.terraform"
   ],
   "dockerFile": "Dockerfile",
   "settings": {
-      "terminal.integrated.shell.linux": "/usr/bin/zsh",
-      "files.exclude": {
-          "**/CODE_OF_CONDUCT.md": true,
-          "**/LICENSE": true
-      }
+      "terminal.integrated.shell.linux": "/usr/bin/zsh"
   }
 }

@@ -2,15 +2,14 @@ locals {
   devcontainer_dockerfile = templatefile(
     "${path.module}/files/devcontainer/${var.workspace_image}/Dockerfile.tpl",
     {
-      workspace_image = var.workspace_image
+      workspace_image     = var.workspace_image
+      workspace_image_tag = var.workspace_image_tag
+      image_registry      = var.image_registry
     }
   )
   devcontainer_json = templatefile(
     "${path.module}/files/devcontainer/${var.workspace_image}/devcontainer.json.tpl",
     {
-      workspace_image     = var.workspace_image
-      workspace_image_tag = var.workspace_image_tag
-      image_registry      = var.image_registry
     }
   )
 }
