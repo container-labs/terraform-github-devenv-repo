@@ -1,8 +1,8 @@
 {
-  "name": "Container Labs NodeJS",
+  "name": "Container Labs Elixir",
   "extensions": [
-      "flowtype.flow-for-vscode",
-      "dbaeumer.vscode-eslint"
+      "jakebecker.elixir-ls",
+      "mjmcloug.vscode-elixir"
   ],
   "dockerFile": "Dockerfile",
   "settings": {
