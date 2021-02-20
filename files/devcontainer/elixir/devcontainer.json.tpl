@@ -1,11 +1,15 @@
 {
-  "name": "Container Labs Elixir",
-  "extensions": [
-      "jakebecker.elixir-ls",
-      "mjmcloug.vscode-elixir"
-  ],
+  "name": "Container Labs elixir",
   "dockerFile": "Dockerfile",
+  "extensions": [
+    "jakebecker.elixir-ls",
+    "mjmcloug.vscode-elixir"
+  ],
   "settings": {
-      "terminal.integrated.shell.linux": "/usr/bin/zsh"
+    "workbench.iconTheme": "vscode-icons",
+    "materialTheme.accent": "Orange",
+    "workbench.startupEditor": "readme",
+    "workbench.colorTheme": "Community Material Theme High Contrast",
+    "terminal.integrated.shell.linux": "/usr/bin/zsh"
   }
 }

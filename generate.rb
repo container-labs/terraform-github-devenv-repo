@@ -1,22 +1,91 @@
 require 'fileutils'
 require 'json'
+require 'yaml'
 
+# TODO, pull these in from a protobuf repo
 images = [
-  "elixir",
-  "erlang",
-  "flutter",
-  "nodejs",
-  "terraform"
+  {
+    name: "elixir",
+    extensions: [
+      "jakebecker.elixir-ls",
+      "mjmcloug.vscode-elixir"
+    ]
+  },
+  {
+    name: "erlang",
+    extensions: [
+      "erlang-ls.erlang-ls",
+      "pgourlain.erlang",
+      "yuce.erlang-otp",
+      "sztheory.erlang-formatter",
+      "nigelrook.vscode-linter-erlc",
+      "sztheory.hex-lens"
+    ]
+  },
+  {
+    name: "flutter",
+    extensions: [
+      "dart-code.dart-code",
+      "dart-code.flutter",
+      "nash.awesome-flutter-snippets",
+      "alexisvt.flutter-snippets",
+      "luanpotter.dart-import",
+      "naco-siren.gradle-language",
+      "mathiasfrohlich.kotlin"
+    ]
+  },
+  {
+    name: "nodejs",
+    extensions: [
+      "flowtype.flow-for-vscode",
+      "dbaeumer.vscode-eslint",
+      "naumovs.color-highlight"
+    ]
+  },
+  {
+    name: "terraform",
+    extensions: [
+      "hashicorp.terraform"
+    ]
+  }
 ]
 
-global_settings = {
+global_extensions = [
+
+]
+
+gitpod_global_settings = {
+  "image": {
+    "file": ".devcontainer/gitpod.Dockerfile"
+  }
+}
+
+vscode_global_settings = {
   "workbench.iconTheme": "vscode-icons",
   "materialTheme.accent": "Orange",
   "workbench.startupEditor": "readme",
-  "workbench.colorTheme": "Community Material Theme High Contrast"
+  "workbench.colorTheme": "Community Material Theme High Contrast",
+  "terminal.integrated.shell.linux": "/usr/bin/zsh"
 }
 
-images.each do|image|
+# def merge_and_write()
+# settings_hash = gitpod_global_settings.clone
+#   if File.file?(file_path)
+#     existing_file = YAML.load(File.read(file_path))
+#     existing_file.keys.each do|key|
+#       unless settings_hash.include?(key.to_sym)
+#         settings_hash[key] = existing_file[key]
+#       end
+#     end
+#   end
+#   File.open(file_path, "w") { |f|
+#     f.puts JSON.pretty_generate(settings_hash)
+#   }
+# end
+
+images.each do|image_object|
+  image = image_object[:name]
+
   FileUtils.mkdir_p "gitpod-workspaces/#{image}"
   File.open("gitpod-workspaces/#{image}/Dockerfile", "w") { |f|
     f.puts "# THIS IMAGE IS GENERATED, EDITS WILL BE OVERWRITTEN"
@@ -42,6 +111,24 @@ images.each do|image|
     f.puts "# THIS FILE IS GENERATED, EDITS WILL BE OVERWRITTEN"
     f.puts "FROM ${image_registry}/${workspace_image}@${workspace_image_digest}"
   }
+  file_path = "files/gitpod/#{image}/gitpod.yml.tpl"
+  settings_hash = gitpod_global_settings.clone
+  if File.file?(file_path)
+    existing_file = YAML.load(File.read(file_path))
+    existing_file.keys.each do|key|
+      unless settings_hash.include?(key.to_sym)
+        settings_hash[key] = existing_file[key]
+      end
+    end
+  end
+  extensions = global_extensions.clone + image_object[:extensions]
+  # extensions.merge!(image_object[:extensions])
+  settings_hash['vscode'] = {
+    'extensions' => extensions.to_a
+  }
+  File.open(file_path, "w") { |f|
+    f.write(settings_hash.to_yaml)
+  }
 
   ####################
   #   devcontainer   #
@@ -50,12 +137,23 @@ images.each do|image|
     f.puts "# THIS FILE IS GENERATED, EDITS WILL BE OVERWRITTEN"
     f.puts "FROM ${image_registry}/${workspace_image}:${workspace_image_tag}"
   }
+  file_path = "files/devcontainer/#{image}/devcontainer.json.tpl"
+  settings_hash = {
+    "name": "Container Labs #{image}",
+    "dockerFile": "Dockerfile",
+    "extensions": global_extensions + image_object[:extensions],
+    "settings": vscode_global_settings
+  }
+  File.open(file_path, "w") { |f|
+    f.puts JSON.pretty_generate(settings_hash)
+  }
+
 
   ####################
   #   vscode   #
   FileUtils.mkdir_p "files/vscode/#{image}"
 
-  settings_hash = global_settings.clone
+  settings_hash = vscode_global_settings.clone
   puts File.absolute_path("files/vscode/#{image}/settings.json.tpl")
   file_path = File.absolute_path("files/vscode/#{image}/settings.json.tpl")
   if File.file?(file_path)

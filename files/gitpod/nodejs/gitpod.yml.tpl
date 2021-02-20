@@ -1,14 +1,10 @@
-image:
-  file: .devcontainer/gitpod.Dockerfile
-
+---
+:image:
+  :file: ".devcontainer/gitpod.Dockerfile"
 tasks:
-  - init: yarn install
-
+- init: yarn install
 vscode:
   extensions:
-    # base extensions, TODO: abstract
-    # I think we can install them in the base image?
-    - coenraads.bracket-pair-colorizer-2
-    # language-specific
-    - flowtype.flow-for-vscode
-    - dbaeumer.vscode-eslint
+  - flowtype.flow-for-vscode
+  - dbaeumer.vscode-eslint
+  - naumovs.color-highlight

@@ -1,11 +1,16 @@
 {
-  "name": "Container Labs NodeJS",
-  "extensions": [
-      "flowtype.flow-for-vscode",
-      "dbaeumer.vscode-eslint"
-  ],
+  "name": "Container Labs nodejs",
   "dockerFile": "Dockerfile",
+  "extensions": [
+    "flowtype.flow-for-vscode",
+    "dbaeumer.vscode-eslint",
+    "naumovs.color-highlight"
+  ],
   "settings": {
-      "terminal.integrated.shell.linux": "/usr/bin/zsh"
+    "workbench.iconTheme": "vscode-icons",
+    "materialTheme.accent": "Orange",
+    "workbench.startupEditor": "readme",
+    "workbench.colorTheme": "Community Material Theme High Contrast",
+    "terminal.integrated.shell.linux": "/usr/bin/zsh"
   }
 }
