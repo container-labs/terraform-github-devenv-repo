@@ -9,7 +9,7 @@ images = [
     extensions: [
       "jakebecker.elixir-ls",
       "mjmcloug.vscode-elixir"
-    ]
+    ],
   },
   {
     name: "erlang",
@@ -35,11 +35,23 @@ images = [
     ]
   },
   {
+    name: "golang",
+    extensions: [
+      "golang.go"
+    ]
+  },
+  {
     name: "nodejs",
     extensions: [
       "flowtype.flow-for-vscode",
       "dbaeumer.vscode-eslint",
       "naumovs.color-highlight"
+    ]
+  },
+  {
+    name: "python",
+    extensions: [
+      "ms-python.python"
     ]
   },
   {
@@ -51,7 +63,13 @@ images = [
 ]
 
 global_extensions = [
-
+  "coenraads.bracket-pair-colorizer-2",
+  # "equinusocio.vsc-community-material-theme",
+  "oderwat.indent-rainbow",
+  "zainchen.json",
+  "equinusocio.vsc-material-theme",
+  "equinusocio.vsc-material-theme-icons"
+  # googlecloudtools.cloudcode
 ]
 
 gitpod_global_settings = {
@@ -86,19 +104,19 @@ vscode_global_settings = {
 images.each do|image_object|
   image = image_object[:name]
 
-  FileUtils.mkdir_p "gitpod-workspaces/#{image}"
-  File.open("gitpod-workspaces/#{image}/Dockerfile", "w") { |f|
-    f.puts "# THIS IMAGE IS GENERATED, EDITS WILL BE OVERWRITTEN"
-    f.puts "ARG BASE_IMAGE=us-central1-docker.pkg.dev/containerlabs/gitpod/base:latest"
-    f.puts "FROM ${BASE_IMAGE}"
-    f.puts "ARG #{image.upcase}_VERSION=default"
-    f.puts ""
-    f.puts "USER gitpod"
-    f.puts ""
-    f.puts "RUN asdf plugin add #{image}"
-    f.puts "RUN asdf install #{image} ${#{image.upcase}_VERSION} && \\
-      asdf global #{image} ${#{image.upcase}_VERSION}"
-  }
+  # FileUtils.mkdir_p "gitpod-workspaces/#{image}"
+  # File.open("gitpod-workspaces/#{image}/Dockerfile", "w") { |f|
+  #   f.puts "# THIS IMAGE IS GENERATED, EDITS WILL BE OVERWRITTEN"
+  #   f.puts "ARG BASE_IMAGE=us-central1-docker.pkg.dev/containerlabs/gitpod/base:latest"
+  #   f.puts "FROM ${BASE_IMAGE}"
+  #   f.puts "ARG #{image.upcase}_VERSION=default"
+  #   f.puts ""
+  #   f.puts "USER gitpod"
+  #   f.puts ""
+  #   f.puts "RUN asdf plugin add #{image}"
+  #   f.puts "RUN asdf install #{image} ${#{image.upcase}_VERSION} && \\
+  #     asdf global #{image} ${#{image.upcase}_VERSION}"
+  # }
 
   ##############
   #   GitPod   #

@@ -1,8 +1,6 @@
 ---
 :image:
   :file: ".devcontainer/gitpod.Dockerfile"
-tasks:
-- init: flutter doctor
 vscode:
   extensions:
   - coenraads.bracket-pair-colorizer-2
@@ -10,10 +8,4 @@ vscode:
   - zainchen.json
   - equinusocio.vsc-material-theme
   - equinusocio.vsc-material-theme-icons
-  - dart-code.dart-code
-  - dart-code.flutter
-  - nash.awesome-flutter-snippets
-  - alexisvt.flutter-snippets
-  - luanpotter.dart-import
-  - naco-siren.gradle-language
-  - mathiasfrohlich.kotlin
+  - ms-python.python

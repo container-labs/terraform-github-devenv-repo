@@ -1,5 +1,5 @@
 {
-  "name": "Container Labs elixir",
+  "name": "Container Labs python",
   "dockerFile": "Dockerfile",
   "extensions": [
     "coenraads.bracket-pair-colorizer-2",
@@ -7,8 +7,7 @@
     "zainchen.json",
     "equinusocio.vsc-material-theme",
     "equinusocio.vsc-material-theme-icons",
-    "jakebecker.elixir-ls",
-    "mjmcloug.vscode-elixir"
+    "ms-python.python"
   ],
   "settings": {
     "workbench.iconTheme": "vscode-icons",
