@@ -3,5 +3,6 @@
   "materialTheme.accent": "Orange",
   "workbench.startupEditor": "readme",
   "workbench.colorTheme": "Community Material Theme High Contrast",
-  "terminal.integrated.shell.linux": "/usr/bin/zsh"
+  "terminal.integrated.shell.linux": "/usr/bin/zsh",
+  "name": "things"
 }

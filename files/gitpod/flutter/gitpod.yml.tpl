@@ -1,6 +1,6 @@
 ---
-:image:
-  :file: ".devcontainer/gitpod.Dockerfile"
+image:
+  file: ".devcontainer/gitpod.Dockerfile"
 tasks:
 - init: flutter doctor
 vscode:

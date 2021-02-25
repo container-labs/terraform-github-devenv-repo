@@ -1,6 +1,6 @@
 ---
-:image:
-  :file: ".devcontainer/gitpod.Dockerfile"
+image:
+  file: ".devcontainer/gitpod.Dockerfile"
 vscode:
   extensions:
   - coenraads.bracket-pair-colorizer-2

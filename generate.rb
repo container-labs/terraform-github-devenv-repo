@@ -73,8 +73,8 @@ global_extensions = [
 ]
 
 gitpod_global_settings = {
-  "image": {
-    "file": ".devcontainer/gitpod.Dockerfile"
+  "image" => {
+    "file" => ".devcontainer/gitpod.Dockerfile"
   }
 }
 
@@ -131,10 +131,14 @@ images.each do|image_object|
   }
   file_path = "files/gitpod/#{image}/gitpod.yml.tpl"
   settings_hash = gitpod_global_settings.clone
+  # settings_hash = {
+  #   "name" => "foobar"
+  # }
+  puts settings_hash
   if File.file?(file_path)
     existing_file = YAML.load(File.read(file_path))
     existing_file.keys.each do|key|
-      unless settings_hash.include?(key.to_sym)
+      unless settings_hash.include?(key)
         settings_hash[key] = existing_file[key]
       end
     end
@@ -145,6 +149,7 @@ images.each do|image_object|
     'extensions' => extensions.to_a
   }
   File.open(file_path, "w") { |f|
+  puts settings_hash.to_yaml
     f.write(settings_hash.to_yaml)
   }
 
