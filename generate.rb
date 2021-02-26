@@ -131,10 +131,6 @@ images.each do|image_object|
   }
   file_path = "files/gitpod/#{image}/gitpod.yml.tpl"
   settings_hash = gitpod_global_settings.clone
-  # settings_hash = {
-  #   "name" => "foobar"
-  # }
-  puts settings_hash
   if File.file?(file_path)
     existing_file = YAML.load(File.read(file_path))
     existing_file.keys.each do|key|
